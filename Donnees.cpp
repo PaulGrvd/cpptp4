@@ -298,7 +298,7 @@ int Donnees::ajouter(string urldoc, string urlref,int h)
 			return 1;
 		}
 		
-		if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css"))!=string::npos&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
+		if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
 			{
 				return 1;
 			}else if(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos)
