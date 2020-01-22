@@ -70,6 +70,7 @@ void Donnees:: graph()
 		}
 	f<<"}";
 	f.close();
+	//system("dot -Tpng graph.png graph.dot");
 }
 
 void Donnees::afficher(int c)
