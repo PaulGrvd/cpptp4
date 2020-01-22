@@ -17,6 +17,8 @@ EXE = main # les exécutables
 main: main.o Logs.o Donnees.o
 	$(ECHO) "Edl de $@"
 	$(EDL) $(EDLFLAGS) -o $@ $^
+	
+graph :	dot -Tpng -o graph.png graph.dot
 
 %.o: %.cpp %.h
 	$(ECHO) "Compil de $<"
