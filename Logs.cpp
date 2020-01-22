@@ -22,9 +22,9 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-string Logs:: getheure()
+int Logs:: getheure()
 {
-return heure;
+return stoi(heure);
 }
 
 string Logs:: getaction()

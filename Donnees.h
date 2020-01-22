@@ -42,10 +42,11 @@ public:
   bool arc_exists(string urldoc, string urlref);
   bool noeud_exists(string n);
   void afficher(int c);
-  int ajouter(string urldoc,string urlref);
-  void TopTen();
+  int ajouter(string urldoc,string urlref,int h);
+  int TopTen();
   void graph();
-
+	void update (int opt, int h);
+		
 //-------------------------------------------- Constructeurs - destructeur
   Donnees();
   virtual ~Donnees();
@@ -54,7 +55,8 @@ public:
 private:
 unordered_map<pair<string,string>, int,hash_pair> arcs;
 unordered_map<string,int> noeuds;
-
+int doption;
+int dheure;
 //------------------------------------------------------- Attributs privés
   
 };

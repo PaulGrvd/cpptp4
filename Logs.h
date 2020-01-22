@@ -25,13 +25,14 @@ class Logs
 public:
 
 //----------------------------------------------------- Méthodes publiques
-string getheure();
+int getheure();
 string getaction();
 string getip();
 string getstatus();
 string getquant_data();
 string geturl_referer();
 string geturl_doc();
+string pt(string s);
 
 
 //-------------------------------------------- Constructeurs - destructeur

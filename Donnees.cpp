@@ -28,8 +28,20 @@ using namespace std;
 
 
 //----------------------------------------------------- Méthodes publiques
-void Donnees::TopTen()
+void Donnees:: update (int opt, int h)
 {
+	doption = opt;
+	dheure = h;
+}
+
+
+int Donnees::TopTen()
+{
+	if (noeuds.size()<10)
+	{
+	cout<<"Il y a moins de 10 url, nous ne pouvons pas faire de top 10.."<<endl;	
+	return 0;
+	}
 	multimap <int, string,greater<int>> tten;
 	for(auto i=noeuds.begin();i!=noeuds.end();i++)
 	{
@@ -44,8 +56,9 @@ void Donnees::TopTen()
 	{
 		n++;
 		it++;
-		std::cout << (*it).first << " => " << (*it).second << '\n';
+		cout << (*it).first << " => " << (*it).second << '\n';
 	}
+	return 1;
 }
 
 void Donnees:: graph()
@@ -90,7 +103,7 @@ void Donnees::afficher(int c)
 		for (auto i=noeuds.begin();i!=noeuds.end();i++)
 		{
 			n=i->second;
-			cout<<"ici"<<n<<endl;
+			//cout<<"ici"<<n<<endl;
 		}
 		break;
 	
@@ -103,7 +116,7 @@ bool Donnees::arc_exists(string urlref, string urldoc)
 	auto it = arcs.find(p);
 	if (it == arcs.end())
 	{
-		cout<<"cet arc n'existe pas"<<endl<<endl;
+		//cout<<"cet arc n'existe pas"<<endl<<endl;
 		return false; //no exists
 	}
 	else
@@ -117,7 +130,7 @@ bool Donnees:: noeud_exists(string url)
 	auto it = noeuds.find(url);
 	if (it == noeuds.end())
 	{
-		cout<<"ce noeud n'existe pas"<<endl<<endl;
+		//cout<<"ce noeud n'existe pas"<<endl<<endl;
 		return false; //no exists
 	}
 	else
@@ -126,41 +139,195 @@ bool Donnees:: noeud_exists(string url)
 	}
 }
 
-int Donnees::ajouter(string urldoc, string urlref)
+int Donnees::ajouter(string urldoc, string urlref,int h)
 {
-	if (arc_exists(urldoc, urlref))
+	switch(doption)
 	{
-		cout<<"j'ajoute 1 à arcs pour"<<urldoc<<"et"<<urlref<<endl;
-		arcs[make_pair(urldoc,urlref)]+=1;
+	case 0:
+		if (arc_exists(urldoc, urlref))
+		{
+			//cout<<"j'ajoute 1 à arcs pour"<<urldoc<<"et"<<urlref<<endl;
+			arcs[make_pair(urldoc,urlref)]+=1;
+		}
+		else 
+		{
+			//cout<<"je mets à 1 arcs pour"<<urldoc<<"et"<<urlref<<endl;
+			arcs[make_pair(urldoc,urlref)]=1;
+		}
+		
+		if (noeud_exists(urldoc))
+		{
+			//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
+			noeuds[urldoc]+=1;
+		}
+		else 
+		{
+			//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
+			noeuds[urldoc]=1;
+		}
+		
+		if (noeud_exists(urlref))
+		{
+			//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
+			noeuds[urlref]+=1;
+		}
+		else 
+		{
+			//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
+			noeuds[urlref]=1;
+		}
+		break;
+
+	case 1 : 
+			if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
+			{
+			cout<<"les deux sont des images"<<endl;
+			cout<<urldoc<<endl;
+			cout<<urlref<<endl;
+				return 1;
+			}else if(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos)
+			{
+			cout<<"ref est une image"<<endl;
+			cout<<urlref<<endl;
+				if (noeud_exists(urldoc))
+				{
+					//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
+					noeuds[urldoc]+=1;
+				}
+				else 
+				{
+					//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
+					noeuds[urldoc]=1;
+				}
+			}else if(urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)
+			{
+			cout<<"doc est une image"<<endl;
+			cout<<urldoc<<endl;
+				if (noeud_exists(urlref))
+				{
+					//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
+					noeuds[urlref]+=1;
+				}
+				else 
+				{
+					//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
+					noeuds[urlref]=1;
+				}
+			}
+			break;
+	case 2 :
+		if (h<dheure+1 && h>=dheure)
+		{
+			if (arc_exists(urldoc, urlref))
+			{
+				//cout<<"j'ajoute 1 à arcs pour"<<urldoc<<"et"<<urlref<<endl;
+				arcs[make_pair(urldoc,urlref)]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 arcs pour"<<urldoc<<"et"<<urlref<<endl;
+				arcs[make_pair(urldoc,urlref)]=1;
+			}
+			
+			if (noeud_exists(urldoc))
+			{
+				//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
+				noeuds[urldoc]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
+				noeuds[urldoc]=1;
+			}
+			
+			if (noeud_exists(urlref))
+			{
+				//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
+				noeuds[urlref]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
+				noeuds[urlref]=1;
+			}
+		}	
+		else 
+		{
+			return 1;
+		}
+		break;
+	case 3 :
+	 
+		if (h<dheure+1 && h>=dheure)
+		{
+			if (arc_exists(urldoc, urlref))
+			{
+				//cout<<"j'ajoute 1 à arcs pour"<<urldoc<<"et"<<urlref<<endl;
+				arcs[make_pair(urldoc,urlref)]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 arcs pour"<<urldoc<<"et"<<urlref<<endl;
+				arcs[make_pair(urldoc,urlref)]=1;
+			}
+			
+			if (noeud_exists(urldoc))
+			{
+				//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
+				noeuds[urldoc]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
+				noeuds[urldoc]=1;
+			}
+			
+			if (noeud_exists(urlref))
+			{
+				//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
+				noeuds[urlref]+=1;
+			}
+			else 
+			{
+				//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
+				noeuds[urlref]=1;
+			}
+		}
+		else 
+		{
+			return 1;
+		}
+		
+		if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css"))!=string::npos&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
+			{
+				return 1;
+			}else if(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos)
+			{
+				if (noeud_exists(urldoc))
+				{
+					//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
+					noeuds[urldoc]+=1;
+				}
+				else 
+				{
+					//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
+					noeuds[urldoc]=1;
+				}
+			}else if(urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css"))
+			{
+				if (noeud_exists(urlref))
+				{
+					//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
+					noeuds[urlref]+=1;
+				}
+				else 
+				{
+					//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
+					noeuds[urlref]=1;
+				}
+			}
+		break;
 	}
-	else 
-	{
-		cout<<"je mets à 1 arcs pour"<<urldoc<<"et"<<urlref<<endl;
-		arcs[make_pair(urldoc,urlref)]=1;
-	}
-	
-	if (noeud_exists(urldoc))
-	{
-		cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
-		noeuds[urldoc]+=1;
-	}
-	else 
-	{
-		cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
-		noeuds[urldoc]=1;
-	}
-	
-	if (noeud_exists(urlref))
-	{
-		cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
-		noeuds[urlref]+=1;
-	}
-	else 
-	{
-		cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
-		noeuds[urlref]=1;
-	}
-	
 	return 1;
 }
 
@@ -174,7 +341,7 @@ Donnees::Donnees()
 	cout << "Constructeur du Donnees" << endl;
 #endif
 
-  
+
 	
 } //----- Fin de Donnees
 
