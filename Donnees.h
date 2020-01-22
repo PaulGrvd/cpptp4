@@ -45,7 +45,7 @@ public:
   int ajouter(string urldoc,string urlref,int h);
   int TopTen();
   void graph();
-	void update (int opt, int h);
+	void update (int opt, int h = 0);
 		
 //-------------------------------------------- Constructeurs - destructeur
   Donnees();
