@@ -181,14 +181,14 @@ int Donnees::ajouter(string urldoc, string urlref,int h)
 	case 1 : 
 			if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
 			{
-			cout<<"les deux sont des images"<<endl;
-			cout<<urldoc<<endl;
-			cout<<urlref<<endl;
+			//cout<<"les deux sont des images"<<endl;
+			//cout<<urldoc<<endl;
+			//cout<<urlref<<endl;
 				return 1;
 			}else if(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos)
 			{
-			cout<<"ref est une image"<<endl;
-			cout<<urlref<<endl;
+			//cout<<"ref est une image"<<endl;
+			//cout<<urlref<<endl;
 				if (noeud_exists(urldoc))
 				{
 					//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
@@ -201,8 +201,8 @@ int Donnees::ajouter(string urldoc, string urlref,int h)
 				}
 			}else if(urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)
 			{
-			cout<<"doc est une image"<<endl;
-			cout<<urldoc<<endl;
+			//cout<<"doc est une image"<<endl;
+			//cout<<urldoc<<endl;
 				if (noeud_exists(urlref))
 				{
 					//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;

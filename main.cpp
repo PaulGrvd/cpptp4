@@ -293,21 +293,26 @@ int main(int argc, char *argv[])
 	
 	Fichier monFic(nomFichierLog);
 	string line;
-
-	while(!(line = monFic.getLine()).compare("EOF") && !line.compare("ERREUR"))
+int compteur = 0 ;
+	//while(!(line = monFic.getLine()).compare("EOF") && !line.compare("ERREUR"))
+	for(int i = 0 ; i < 100000 ; ++i)	
 	{
-		Logs monLog(line);
+//compteur++;
+		Logs monLog(monFic.getLine());
 		data.ajouter(monLog.geturl_referer(), monLog.geturl_doc(), monLog.getheure());
+	if(i%1000 == 0)
+		cout << ++compteur << endl;
+	//cout << "site : " << monLog.geturl_doc() << endl;
 	}
 	
-
-	data.afficher(2);
+//cout << "compte : " << compteur << endl; 
+	//data.afficher(2);
 	data.TopTen();
 
 	if(traceGraphe)
 	{
 		cout << "Traçons le graphe !" << endl;
-		data.graph();
+		//data.graph();
 	}
 
 	cout << "Fin du programme." << endl;

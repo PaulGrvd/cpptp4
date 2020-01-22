@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Logs.h"
 #include <regex>
+#include <iostream>
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
@@ -24,6 +25,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 int Logs:: getheure()
 {
+
 return stoi(heure);
 }
 
@@ -96,6 +98,8 @@ Logs::Logs(string line)
 	
 	regex_search(line,match,rstatus);
 	status = match.str(1);
+	//cout << "heure : " << heure << endl;
+	//cout << url_doc << endl;
 	
 	
 } //----- Fin de Logs
