@@ -258,51 +258,11 @@ int Donnees::ajouter(string urldoc, string urlref,int h)
 		}
 		break;
 	case 3 :
-	 
-		if (h<dheure+1 && h>=dheure)
-		{
-			if (arc_exists(urldoc, urlref))
-			{
-				//cout<<"j'ajoute 1 à arcs pour"<<urldoc<<"et"<<urlref<<endl;
-				arcs[make_pair(urldoc,urlref)]+=1;
-			}
-			else 
-			{
-				//cout<<"je mets à 1 arcs pour"<<urldoc<<"et"<<urlref<<endl;
-				arcs[make_pair(urldoc,urlref)]=1;
-			}
-			
-			if (noeud_exists(urldoc))
-			{
-				//cout<<"j'ajoute 1 à noeuds pour"<<urldoc<<endl;
-				noeuds[urldoc]+=1;
-			}
-			else 
-			{
-				//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
-				noeuds[urldoc]=1;
-			}
-			
-			if (noeud_exists(urlref))
-			{
-				//cout<<"j'ajoute 1 à noeuds pour"<<urlref<<endl;
-				noeuds[urlref]+=1;
-			}
-			else 
-			{
-				//cout<<"je mets à 1 noeuds pour"<<urlref<<endl;
-				noeuds[urlref]=1;
-			}
-		}
-		else 
-		{
-			return 1;
-		}
-		
-		if ((urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
+	 		
+		if ((!(h<dheure+1 && h>=dheure))&&(urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")!=string::npos)&&(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
 			{
 				return 1;
-			}else if(urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos)
+			}else if((h<dheure+1 && h>=dheure) && (urlref.find(".ico")!=string::npos||urlref.find(".gif")!=string::npos||urlref.find(".jpg")!=string::npos||urlref.find(".js")!=string::npos||urlref.find(".png")!=string::npos||urlref.find(".jpeg")!=string::npos||urlref.find(".css")!=string::npos))
 			{
 				if (noeud_exists(urldoc))
 				{
@@ -314,7 +274,7 @@ int Donnees::ajouter(string urldoc, string urlref,int h)
 					//cout<<"je mets à 1 noeuds pour"<<urldoc<<endl;
 					noeuds[urldoc]=1;
 				}
-			}else if(urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css"))
+			}else if((h<dheure+1 && h>=dheure) && (urldoc.find(".ico")!=string::npos||urldoc.find(".gif")!=string::npos||urldoc.find(".jpg")!=string::npos||urldoc.find(".js")!=string::npos||urldoc.find(".png")!=string::npos||urldoc.find(".jpeg")!=string::npos||urldoc.find(".css")))
 			{
 				if (noeud_exists(urlref))
 				{
