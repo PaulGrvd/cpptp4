@@ -1,0 +1,84 @@
+ano.log est le fichier "anonyme.log" en version réduite
+
+Cas normaux
+
+./analog ano.log
+
+
+./analog -e ano.log
+./analog -t 3 ano.log
+./analog -g graphe.dot ano.log
+
+
+./analog -e -t 3 ano.log
+./analog -t 3 -e ano.log
+
+./analog -e -g graphe.dot ano.log
+./analog -g graphe.dot -e ano.log
+
+./analog -t 3 -g graphe.dot ano.log
+./analog -g graphe.dot -t 3 ano.log
+
+
+./analog -e -t 3 -g graphe.dot ano.log
+./analog -e -g graphe.dot -t 3 ano.log
+
+./analog -t 3 -e -g graphe.dot ano.log
+./analog -t 3 -g graphe.dot -e ano.log
+
+./analog -g graphe.dot -t 3 -e ano.log
+./analog -g graphe.dot -e -t 3 ano.log
+
+
+Cas limites
+
+./analog ano.log   #fichier de log vides
+./analog ano.log   #fichier de log contenant moins de 10 documents
+./analog ano.log   #fichier de log contenant 10 documents
+./analog ano.log   #fichier de log dont les derniers documents du TopTen sont à égalité (9e, 10e, 11e, 12e)
+
+./analog -e ano.log #fichier de log ne contenant aucun document de type image
+./analog -e ano.log #fichier de log ne contenant que des documents de type image
+./analog -e ano.log #le total des documents restants est inférieur à 10
+
+./analog -t 3 ano.log #aucun document contenu dans la plage horaire
+./analog -t 3 ano.log #tous les documents contenus dans la plage horaire
+./analog -t 3 ano.log #le total des documents restants est inférieur à 10
+./analog -t 24 ano.log #cas limite indéfini ?
+
+
+./analog -g graphe.dot ano.log #fichier de log vide
+
+
+./analog -e -g graphe.dot ano.log # fichier de log vide après tri
+./analog -t 3 -g graphe.dot ano.log # fichier de log vide après tri
+./analog -e -t 3 -g graphe.dot ano.log # fichier de log vide après tri
+
+
+Cas d'erreur
+
+./analog # aucun nom de fichier spécifié
+./analog fichierIntrouvable.log
+./analog fichierInaccessible.log # problème de droit, chmod 000
+./analog ano
+
+
+./analog -e randomText ano.log
+./analog randomText -e ano.log
+./analog -e -e ano.log
+./analog -e
+
+
+./analog -t -1 ano.log
+./analog -t 25 ano.log
+./analog -t 3 randomText ano.log
+./analog -randomText -t 3 ano.log
+./analog -t 3 -t 4 ano.log
+./analog -t heure ano.log
+./analog -t 3
+
+./analog -g graphe ano.log
+./analog -g graphe style.dot ano.log
+./analog -g  ano.log
+./analog randomText -g graphe.dot ano.log
+./analog -g graphe.dot
