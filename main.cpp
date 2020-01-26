@@ -293,26 +293,28 @@ int main(int argc, char *argv[])
 	
 	Fichier monFic(nomFichierLog);
 	string line;
-int compteur = 0 ;
-	//while(!(line = monFic.getLine()).compare("EOF") && !line.compare("ERREUR"))
-	for(int i = 0 ; i < 100000 ; ++i)	
+
+	do
+	//for(int i = 0 ; i < 10 ; ++i)	
 	{
-//compteur++;
-		Logs monLog(monFic.getLine());
+		line = monFic.getLine();
+		if(line.compare("EOF") == 0 || line.compare("ERREUR") == 0 || line.compare("EOFF") == 0)
+			break;
+		Logs monLog(line);
+		
 		data.ajouter(monLog.geturl_referer(), monLog.geturl_doc(), monLog.getheure());
-	if(i%1000 == 0)
-		cout << ++compteur << endl;
-	//cout << "site : " << monLog.geturl_doc() << endl;
-	}
+	} while(true);
 	
-//cout << "compte : " << compteur << endl; 
+	cout << endl << "Ligne de sortie : " << line << endl;
+	// EOFF -> ligne vide, EOF -> fin de fichier, ERREUR -> failbit ou badbit du flux de lecture activé
+	
 	//data.afficher(2);
 	data.TopTen();
 
 	if(traceGraphe)
 	{
 		cout << "Traçons le graphe !" << endl;
-		//data.graph();
+		data.graph();
 	}
 
 	cout << "Fin du programme." << endl;

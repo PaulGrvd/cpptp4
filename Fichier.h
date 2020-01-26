@@ -32,8 +32,14 @@ public:
 //----------------------------------------------------- Méthodes publiques
   string getLine()
   {
+    if(lect.eof())
+      return "EOF";
+    else if(!lect)
+      return "ERREUR";
     string tampon;
     getline(lect, tampon);
+    if(tampon.size() < 3)
+      return "EOFF";
     return tampon;
   }
 
