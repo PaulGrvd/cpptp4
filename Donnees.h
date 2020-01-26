@@ -39,12 +39,12 @@ class Donnees
 public:
 
 //----------------------------------------------------- Méthodes publiques
-  bool arc_exists(string urldoc, string urlref);
-  bool noeud_exists(string n);
-  void afficher(int c);
-  int ajouter(string urldoc,string urlref,int h);
-  int TopTen();
-  void graph();
+  bool arc_exists(string urldoc, string urlref) const;
+  bool noeud_exists(string n) const;
+  void afficher(int c) const;
+  int ajouter(string urldoc,string urlref,int h) ;
+  int TopTen() ;
+  void graph() ;
 	void update (int opt, int h = 0);
 		
 //-------------------------------------------- Constructeurs - destructeur

@@ -32,6 +32,7 @@ void Donnees:: update (int opt, int h)
 {
 	doption = opt;
 	dheure = h;
+	return;
 }
 
 
@@ -86,7 +87,7 @@ void Donnees:: graph()
 	//system("dot -Tpng graph.png graph.dot");
 }
 
-void Donnees::afficher(int c)
+void Donnees::afficher(int c) const
 {
 
 	int n;
@@ -110,7 +111,7 @@ void Donnees::afficher(int c)
 	}
 }
 
-bool Donnees::arc_exists(string urlref, string urldoc)
+bool Donnees::arc_exists(string urlref, string urldoc) const
 {
 	pair<string,string> p = make_pair(urlref, urldoc);
 	auto it = arcs.find(p);
@@ -125,7 +126,7 @@ bool Donnees::arc_exists(string urlref, string urldoc)
 	}
 }
 
-bool Donnees:: noeud_exists(string url)
+bool Donnees:: noeud_exists(string url) const
 {
 	auto it = noeuds.find(url);
 	if (it == noeuds.end())
@@ -139,7 +140,7 @@ bool Donnees:: noeud_exists(string url)
 	}
 }
 
-int Donnees::ajouter(string urldoc, string urlref,int h)
+int Donnees::ajouter(string urldoc, string urlref,int h) 
 {
 	switch(doption)
 	{
