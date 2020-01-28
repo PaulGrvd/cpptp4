@@ -287,12 +287,18 @@ int main(int argc, char *argv[])
 			break;
 	}
 	
-	cout << "Fin du gros switch." << endl;
+        //cout << "Fin du gros switch." << endl;
 
 	
 	
 	Fichier monFic(nomFichierLog);
 	string line;
+
+        if(!monFic.etatFichier())
+        {
+            cerr << "Impossible d'ouvrir le fichier." << endl;
+            return 0;
+        }
 
 	do
 	//for(int i = 0 ; i < 10 ; ++i)	
@@ -305,7 +311,7 @@ int main(int argc, char *argv[])
 		data.ajouter(monLog.geturl_referer(), monLog.geturl_doc(), monLog.getheure());
 	} while(true);
 	
-	cout << endl << "Ligne de sortie : " << line << endl;
+        //cout << endl << "Ligne de sortie : " << line << endl;
 	// EOFF -> ligne vide, EOF -> fin de fichier, ERREUR -> failbit ou badbit du flux de lecture activé
 	
 	//data.afficher(2);
@@ -313,7 +319,7 @@ int main(int argc, char *argv[])
 
 	if(traceGraphe)
 	{
-		cout << "Traçons le graphe !" << endl;
+                //cout << "Traçons le graphe !" << endl;
 		data.graph();
 	}
 
@@ -370,7 +376,7 @@ int recupHeure(string option)
 			cerr << "Heure non valide. Veuillez réessayer." << endl;
 			return -1;
 		}
-		cout << heure << endl;
+                //cout << heure << endl;
 	}
 	catch (std::invalid_argument const &e)
 	{

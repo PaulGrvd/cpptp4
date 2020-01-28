@@ -25,7 +25,6 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 int Logs:: getheure()
 {
-
 return stoi(heure);
 }
 

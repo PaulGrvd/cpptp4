@@ -40,7 +40,7 @@ int Donnees::TopTen()
 {
 	if (noeuds.size()<10)
 	{
-	cout<<"Il y a moins de 10 url, nous ne pouvons pas faire de top 10.."<<endl;	
+        cerr<<"Il y a moins de 10 url, nous ne pouvons pas faire de top 10.."<<endl;
 	return 0;
 	}
 	multimap <int, string,greater<int>> tten;

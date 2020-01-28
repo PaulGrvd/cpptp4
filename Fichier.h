@@ -42,6 +42,10 @@ public:
       return "EOFF";
     return tampon;
   }
+  bool etatFichier()
+  {
+      return !lect.fail();
+  }
 
 //-------------------------------------------- Constructeurs - destructeur
   Fichier(string nomFichier)
