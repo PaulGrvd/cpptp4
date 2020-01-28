@@ -49,6 +49,21 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
+        for(int i = 1 ; i <= argc-3 ; ++i)
+        {
+            if(estGraphe(string(argv[i])))
+            {
+                string nomFichierGraphe = string(argv[i+1]);
+
+                if (nomFichierGraphe.find(".dot") == string::npos)
+                {
+                    cerr << "Le nom de fichier de graphe rentré ne contient pas l'extension '.dot'." << endl;
+                    return 0;
+                }
+            }
+
+        }
+
 
 	Donnees data = Donnees();
 	bool traceGraphe = false;

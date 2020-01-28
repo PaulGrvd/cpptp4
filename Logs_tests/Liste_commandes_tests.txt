@@ -31,7 +31,7 @@ Cas normaux : fichiers Test0 à Test15
 
 
 
-Cas limites
+Cas limites : fichiers Test16 à Test30
 
 ./analog logvide.log   #fichier de log vides
 ./analog moins10.log   #fichier de log contenant moins de 10 documents
@@ -45,6 +45,7 @@ Cas limites
 ./analog -t 17 0heure_3.log #aucun document contenu dans la plage horaire
 ./analog -t 12 queHeure_12.log #tous les documents contenus dans la plage horaire
 ./analog -t 11 moins10heure.log #le total des documents restants est inférieur à 10
+./analog -t 24 ano.log
 
 ./analog -g graphe.dot logvide.log #fichier de log vide
 
@@ -53,24 +54,19 @@ Cas limites
 ./analog -e -t 17 -g graphe.dot 0imageheure3 # fichier de log vide après tri
 
 
-Cas d'erreur
+Cas d'erreur : fichiers Test31 à Test49
 
 ./analog # aucun nom de fichier spécifié
 ./analog fichierIntrouvable.log
 ./analog fichierInaccessible.log # problème de droit, chmod 000
 ./analog ano
 
-
 ./analog -e randomText ano.log
 ./analog randomText -e ano.log
 ./analog -e -e ano.log
 ./analog -e
 
-./analog -t 24 ano.log
 ./analog -t -1 ano.log
-
-./analog -t -1 ano.log
-./analog -t 25 ano.log
 ./analog -t 17 randomText ano.log
 ./analog -randomText -t 17 ano.log
 ./analog -t 17 -t 4 ano.log
