@@ -53,12 +53,13 @@ int Donnees::TopTen()
 	int n=0;
 	cout<<"top ten :"<<endl;
 	//affichage 
-	while (n<10)
+	while (n<9)
 	{
 		n++;
-		it++;
 		cout << (*it).first << " => " << (*it).second << '\n';
+		it++;
 	}
+	cout << (*it).first << " => " << (*it).second << '\n';
 	return 1;
 }
 
