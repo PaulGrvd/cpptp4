@@ -1,0 +1,1 @@
+(cd ../../ ; cp analog ./Logs_tests ; cd ./Logs_tests/ ; ./analog -t 3 0heure_3.log)
