@@ -85,7 +85,8 @@ Logs::Logs(string line)
 	
 	regex_search(line,match,rdoc);
 	url_doc = match.str(1);
-	
+
+	url_doc= "http://intranet-if.insa-lyon.fr"+url_doc;	
 	regex_search(line,match,rref);
 	url_referer = match.str(1);
 	
