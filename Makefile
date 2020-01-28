@@ -1,4 +1,4 @@
-# makefile du dossier IF-3-POO2-TP3, permet de compiler en exécutable les fichiers de l'application
+﻿# makefile du dossier IF-3-POO2-TP3, permet de compiler en exécutable les fichiers de l'application
 
 CFLAGS= -DNDEBUG -Wall -ansi -g -pedantic -std=c++11 #-Werror #-DMAP # variables
 COMP = g++
@@ -14,7 +14,7 @@ SRCS = main.cpp Logs.cpp Donnees.cpp  # les fichiers sources .cpp à compiler
 OBJS = $(SRCS:.c=.o)
 EXE = main # les exécutables
 	
-main: main.o Logs.o Donnees.o
+analog: main.o Logs.o Donnees.o
 	$(ECHO) "Edl de $@"
 	$(EDL) $(EDLFLAGS) -o $@ $^
 	
