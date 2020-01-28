@@ -1,0 +1,1 @@
+(cd ../../ ; ./analog -e -t 17 ano.log)
