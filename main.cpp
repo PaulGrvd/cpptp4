@@ -371,7 +371,7 @@ int recupHeure(string option)
 	try
 	{
 		heure = stoi(option);
-		if(heure > 24 || heure < 0)
+                if(heure >= 24 || heure < 0)
 		{
 			cerr << "Heure non valide. Veuillez réessayer." << endl;
 			return -1;
