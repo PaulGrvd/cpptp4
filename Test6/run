@@ -1,1 +1,0 @@
-(cd ../../ ; ./analog -e -g graphe.dot ano.log)
